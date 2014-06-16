@@ -1,5 +1,12 @@
-TODO. open its CVar switch for "debug_ALL" and "debug_XXX"
+DONE. open its CVar switch for "debug_ALL" and "debug_XXX"
+==================================================
 TODO. move save dir of profile from (project)/profiles to .critterding/profiles
+	1. share\crittering\settings.xml line35
+			<input_keyboard key="s" action="settings_saveprofile" param="profiles" />
+	2. be_command_system.cpp line13
+		registerStringCommand("settings_saveprofile", boost::bind(&Settings::saveProfile, settings, _1));
+	3. so it pass "profiles" as the content of savedir for void Settings::saveProfile( const std::string& savedir ), and it turns it as fulldir. BUG
+	
 TODO. give profile a name rather than time when save it.
 TODO. save profile when save critters
 TODO. autoload profile by something like --profile lastsaved
