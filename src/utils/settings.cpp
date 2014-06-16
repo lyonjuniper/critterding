@@ -220,11 +220,12 @@ void Settings::saveProfile( const std::string& savedir )
 	std::string profileName( s.str() );
 	
 // 	std::string fulldir(savedir + "/" + profileName);
-	std::string fulldir(dirlayout->progdir + "/" + savedir);
-
 	//FIXME: savedir get from settings.xml for string "profiles". 
 	//            thus fulldir is effectively "${PWD}/profiles"
 	//            should fix it as to Dirlayout::progdir, which is "${HOME}/.critterding"
+	//bypass the input parameter savedir
+	std::string fulldir(dirlayout->profiledir);
+
 	if ( !dirH.exists(fulldir) )
 		dirH.make(fulldir);
 

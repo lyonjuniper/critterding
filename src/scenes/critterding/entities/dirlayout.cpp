@@ -31,6 +31,7 @@ void Dirlayout::createDirs()
 	savedir = progdir + "/save";
 	loaddir = progdir + "/load";
 	exchangedir = savedir + "/exchange";
+	profiledir = progdir + "/profiles";
 	
 // #else
 // 	progdir = homedir;	progdir.append("\\critterding");
@@ -48,7 +49,8 @@ void Dirlayout::createDirs()
 		dirH.make(savedir);
 	if ( !dirH.exists(exchangedir) )
 		dirH.make(exchangedir);
-
+	if ( !dirH.exists(profiledir) )
+		dirH.make(profiledir);
 }
 
 std::string Dirlayout::getHomedir()

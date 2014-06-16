@@ -20,6 +20,7 @@ class Dirlayout
 		std::string savedir;
 		std::string loaddir;
 		std::string exchangedir;
+		std::string profiledir;
 
 	protected:
 		Dirlayout();
