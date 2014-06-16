@@ -39,6 +39,16 @@ Settings::Settings() :
 // 	registerCVar("texture_compression",	new CVar(	1,	1,	16,		false,	"set texture compression") );
 // 	registerCVar("texture_filtering_min",	new CVar(	0,	0,	0,		false,	"set texture minification filter") );
 // 	registerCVar("texture_filtering_mag",	new CVar(	0,	0,	0,		false,	"set texture magnification filter") );
+
+	//lyon: register local cvar (not saved in profile, but can alter in commandline), for debug switches
+	registerLocalCVar("debug_ALL",	new CVar(	0,	0,	1,		true,	"enable debug ALL") );
+	registerLocalCVar("debug_FILE",	new CVar(	0,	0,	1,		true,	"enable debug FILE") );
+	registerLocalCVar("debug_SETTINGS",	new CVar(	0,	0,	1,		true,	"enable debug SETTINGS") );
+	registerLocalCVar("debug_OBJ",	new CVar(	0,	0,	1,		true,	"enable debug OBJ") );
+	registerLocalCVar("debug_PHYSTICS",	new CVar(	0,	0,	1,		true,	"enable debug PHYSTICS") );
+	registerLocalCVar("debug_SHADER",	new CVar(	0,	0,	1,		true,	"enable debug SHADER") );
+	registerLocalCVar("debug_WINDOW",	new CVar(	0,	0,	1,		true,	"enable debug WINDOW") );
+
 }
 
 void Settings::registerCVar(const std::string& name, CVar* cvar)
