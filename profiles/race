@@ -1,0 +1,15 @@
+race 1
+
+mincritters 21
+
+worldsizeX 500
+worldsizeY 110
+
+food_maxenergy 3000
+food_size 250
+
+critter_maxlifetime 2000
+critter_maxenergy 50000
+
+brain_mutationrate 15
+body_mutationrate 15

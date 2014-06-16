@@ -1,0 +1,8 @@
+TODO. open its CVar switch for "debug_ALL" and "debug_XXX"
+TODO. move save dir of profile from (project)/profiles to .critterding/profiles
+TODO. give profile a name rather than time when save it.
+TODO. save profile when save critters
+TODO. autoload profile by something like --profile lastsaved
+TODO. bar for fitness of critter in race, and save critters above the bar
+TODO. save the profile when exist from empty world
+TODO. try test world.

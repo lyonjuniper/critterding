@@ -1,0 +1,13 @@
+*.[oa]
+*~
+*.orig
+
+CMakeCache.txt
+CMakeFiles/
+Makefile
+*.cmake
+
+src/critterding
+
+profiles/*.pro
+!profiles/race.pro

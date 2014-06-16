@@ -1,0 +1,96 @@
+- <Eth|cal> sometimes critters flicker between white and normal colour in the critterview
+
+- Window Headers as in F1 window
+
+- default settings for brainview
+
+- check all settings
+
+- remove 1 pixel spacer in crittervision!
+
+- turn sun at roundworld
+
+- killhalf settings to F12, make % population_eliminate_limt
+
+- option to allow multiple connections / plane
+
+- test crash & limits of 2.5 million+ synapses / critter when opening brainview
+
+- field of view broken
+
+- fpslimit stopped working? 
+
+
+beta13.1
+--------
+
+X bzip compression on critters
+
+X disabled testworld & concaveworld
+
+X OpenMP is now optional
+
+X fix make install
+
+X removed obsolete libusb dependency
+
+X fix: autoexchange segfault
+
+X boost linking fix
+
+beta13
+------
+
+X selfcollisions & camera precision in f6 window
+
+X fix/disable autoexchange
+
+X optimise, make theaded & fix brainview further
+
+X make bullet static
+
+X changed decreasing energy by percentage to the unit
+
+X activate food when map changes
+
+X cost / bodypart
+
+X mutationrate : more precise
+
+X rejuvenate like 25%
+
+X adapt F1 panel
+
+X test dying critter on constraint
+
+X segfault when duplicating critters
+
+X retina of critters : 2048 x 2048 atm, do like cd2
+  retinasperrow in worldb ???
+
+X optimise neuroninterz process (cachegrind)
+
+X when switching fs, reposition the hud
+
+X pixel offset in the hud
+
+X adjust brain weights for more synapses
+
+X braincosts & bodycosts, smaller influence
+
+X lighting & colors
+
+X food count reporting fix
+
+X fix freeEnergy floating point drift
+
+X speciesview is not accurate, wrong color with wrong number of neurons
+
+X if the SEEN critter  (by critter) is of the same species, differentiate by alpha
+
+X threads in other modes
+
+X simply do not insert food if > critters kill limit
+
+X critters can now see if other critters are of the same species
+
