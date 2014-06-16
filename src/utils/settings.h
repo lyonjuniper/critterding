@@ -113,7 +113,7 @@ class Settings
 
 		void			checkCommandLineOptions(int argc, char *argv[]);
 		void			loadProfile(const std::string& filename);
-		void			saveProfile(const std::string& savedir);
+		void			saveProfile();
 
 		int*			winWidth;
 		int*			winHeight;

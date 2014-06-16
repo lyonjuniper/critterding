@@ -10,7 +10,7 @@ BeCommandSystem* BeCommandSystem::Instance ()
 BeCommandSystem::BeCommandSystem()
 {
 	Settings* const	settings = Settings::Instance();
-	registerStringCommand("settings_saveprofile", boost::bind(&Settings::saveProfile, settings, _1));
+	registerVoidCommand("settings_saveprofile", boost::bind(&Settings::saveProfile, settings));
 	registerStringCommand("settings_increase", boost::bind(&Settings::increaseCVar, settings, _1, 1));
 	registerStringCommand("settings_decrease", boost::bind(&Settings::decreaseCVar, settings, _1, 1));
 }

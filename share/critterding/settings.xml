@@ -32,7 +32,7 @@
 
 	<input_keyboard key="l" action="settings_increase" param="fpslimit" />
 <!-- 	<input_keyboard key="m" action="toggle_mouselook" /> -->
-	<input_keyboard key="s" action="settings_saveprofile" param="profiles" />
+	<input_keyboard key="s" action="settings_saveprofile" />
 	<input_keyboard key="h" action="gui_toggle" />
 
 	<input_keyboard key="[/]" action="settings_decrease" param="camerasensitivity_move" repeat="1" delay="150" />

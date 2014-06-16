@@ -213,7 +213,7 @@ void Settings::loadProfile(const std::string& filename)
 		m_logDebug << "::SETTINGS warning: cannot open profile '" << filename << "'\n";
 }
 
-void Settings::saveProfile( const std::string& savedir )
+void Settings::saveProfile()
 {
 	std::stringstream s;
 	s << time(0);
