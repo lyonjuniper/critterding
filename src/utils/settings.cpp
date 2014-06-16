@@ -12,6 +12,9 @@ Settings::Settings() :
  winHeight(0),
  m_logDebug("SETTINGS")
 {
+	// default profile name, which should be updated during profile load
+	m_profileName = "default";
+	
 	 // home & program directory
 	 dirlayout = Dirlayout::Instance();
 
@@ -178,9 +181,31 @@ void Settings::loadProfile(const std::string& filename)
 {
 	m_logDebug << "::SETTINGS loading from '" << filename << "'\n";
 
+
 	BeFile befileProfile;
 	if ( m_filesystem.load( befileProfile, filename ) )
 	{
+		// update profilename
+		unsigned found = filename.find_last_of("/\\");
+		std::string file;
+		//strip path
+		if ( found != std::string::npos ) {
+			file = filename.substr(found+1);
+		}
+		else {
+			// no path, all are file
+			file = filename;
+		}
+		//strip ".pro"
+		found = file.rfind(".pro");
+		if (found != std::string::npos ) {
+			m_profileName = file.erase(found);
+		}
+		else {
+			m_profileName = file;
+		}
+		m_logDebug << "::SETTINGS profile name updated to " << m_profileName << "\n";
+		
 		std::string line;
 		while ( befileProfile.getLine(line) )
 		{
@@ -216,7 +241,7 @@ void Settings::loadProfile(const std::string& filename)
 void Settings::saveProfile()
 {
 	std::stringstream s;
-	s << time(0);
+	s << m_profileName << "-" << time(0);
 	std::string profileName( s.str() );
 	
 // 	std::string fulldir(savedir + "/" + profileName);

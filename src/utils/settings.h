@@ -136,6 +136,8 @@ class Settings
 		BeFilesystem	m_filesystem;
 		BeLogDebug	m_logDebug;
 		boost::shared_ptr<Logbuffer> m_logBuffer;
+
+		std::string m_profileName;
 };
 
 #endif
