@@ -12,6 +12,9 @@ Settings::Settings() :
  winHeight(0),
  m_logDebug("SETTINGS")
 {
+	 // home & program directory
+	 dirlayout = Dirlayout::Instance();
+
 // 	registerCVar("fullscreen",		new CVar(	0,	0,	1,		true,	"enable fullscreen mode") );
 	registerCVar("headless",		new CVar(	0,	0,	1,		true,	"do not open gl context") );
 	registerCVar("drawscene",		new CVar(	1,	0,	1,		true,	"draw the scene") );
@@ -217,7 +220,7 @@ void Settings::saveProfile( const std::string& savedir )
 	std::string profileName( s.str() );
 	
 // 	std::string fulldir(savedir + "/" + profileName);
-	std::string fulldir(savedir);
+	std::string fulldir(dirlayout->progdir + "/" + savedir);
 
 	//FIXME: savedir get from settings.xml for string "profiles". 
 	//            thus fulldir is effectively "${PWD}/profiles"

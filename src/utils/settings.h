@@ -10,6 +10,7 @@
 #include "filesystem/be_dir.h"
 #include "kernel/be_log.h"
 #include "filesystem/be_filesystem.h"
+#include "scenes/critterding/entities/dirlayout.h"
 
 class Logbuffer;
 
@@ -127,6 +128,7 @@ class Settings
 		std::map<std::string, CVar*> cvarlist;
 
 		Dir			dirH;
+		Dirlayout *dirlayout;
 		std::stringstream helpinfo;
 		void createHelpInfo();
 
