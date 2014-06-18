@@ -29,7 +29,7 @@ void GLWindow::create(const std::string& title)
 {
 	if( SDL_Init(SDL_INIT_VIDEO) < 0 )
 	{
-		m_logDebug << "::WINDOW error: SDL Video initialization failed with error '" << SDL_GetError() << "'\n";
+		BE_LOG( " error: SDL Video initialization failed with error '" << SDL_GetError() );
 		exit(1);
 	}
 // 	std::cout << "GLWindow::create" << std::endl;
@@ -108,8 +108,7 @@ void GLWindow::create(const std::string& title)
 
 			if ( !vidInfo )
 			{
-				m_logDebug << "::WINDOW error: Cannot get SDL video information '" <<  SDL_GetError() << "'\n";
-				exit(1);
+				BE_ERROR( "::WINDOW error: Cannot get SDL video information '" <<  SDL_GetError() );
 			}
 
 			w_bpp = vidInfo->vfmt->BitsPerPixel;
@@ -167,7 +166,7 @@ void GLWindow::create(const std::string& title)
 
 // 			usleep (100000);
 			
-			m_logDebug << "::WINDOW SDL subsystem initialized\n";
+			BE_LOG( " SDL subsystem initialized" );
 			return;
 
 		}
@@ -189,8 +188,7 @@ void GLWindow::createSafe( const std::string& title )
 
 		if ( !vidInfo )
 		{
-			m_logDebug << "::WINDOW error: Cannot get SDL video information '" <<  SDL_GetError() << "'\n";
-			exit(1);
+			BE_ERROR( "::WINDOW error: Cannot get SDL video information '" <<  SDL_GetError() );
 		}
 
 		w_bpp = vidInfo->vfmt->BitsPerPixel;
@@ -248,7 +246,7 @@ void GLWindow::createSafe( const std::string& title )
 	// 		m_surface = SDL_SetVideoMode( w_width, w_height, w_bpp, vidFlags | SDL_RESIZABLE );
 	// 	}
 	// 	glewInit();
-		m_logDebug << "::WINDOW SDL subsystem initialized\n";
+		BE_LOG( "SDL subsystem initialized" );
 		// 	std::cerr << "Video " << front.width() << "x" << front.height() << "x" << int(front.getSurface()->format->BitsPerPixel) << "\n";
 		// 	std::cerr << "Render Mode: " <<  ((hwaccel) ? "Direct Rendering" : "Software Rendering")   << "\n";
 		// 	std::cerr << "Hardware Blit Acceleration: " << ((vidInfo->blit_hw) ? "Yes": "No") << "\n";

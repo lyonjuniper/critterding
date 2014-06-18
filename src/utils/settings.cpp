@@ -104,10 +104,10 @@ bool Settings::setCVar(const std::string& name, const unsigned int& value)
 		if ( cvar->set(value) )
 			return true;
 		else
-			m_logDebug << "::SETTINGS warning failed to set value for cvar '" << name << "': value must be >=" << cvarlist[name]->getIntMin() << " and <=" << cvarlist[name]->getIntMax() << "'\n";
+			BE_LOG( "warning failed to set value for cvar '" << name << "': value must be >=" << cvarlist[name]->getIntMin() << " and <=" << cvarlist[name]->getIntMax() );
 	}
 	else
-		m_logDebug << "::SETTINGS unknown cvar: '" << name << "'\n";
+		BE_LOG( "unknown cvar: '" << name << "'");
 	return false;
 }
 
@@ -118,13 +118,15 @@ bool Settings::setCVar(const std::string& name, const std::string& value)
 	{
 		if ( cvar->set(value) )
 			return true;
-		else if ( cvarlist[name]->getType() == T_INT )
-			m_logDebug << "::SETTINGS warning failed to set value for cvar '" << name << "': value must be >=" << cvarlist[name]->getIntMin() << " and <=" << cvarlist[name]->getIntMax() << "'\n";
-		else
-			m_logDebug << "::SETTINGS warning failed to set value for cvar: '" << name << "'\n";
+		else if ( cvarlist[name]->getType() == T_INT ) {
+			BE_LOG( "warning failed to set value for cvar '" << name << "': value must be >=" << cvarlist[name]->getIntMin() << " and <=" << cvarlist[name]->getIntMax() << "'" ); 
+		}	else	{ 
+			BE_LOG( "warning failed to set value for cvar: '" << name << "'" ); 
+		}
 	}
-	else
-		m_logDebug << "::SETTINGS unknown cvar: '" << name << "'\n";
+	else { 
+		BE_LOG( "unknown cvar: '" << name << "'" ); 
+	}
 	return false;
 }
 
@@ -140,7 +142,7 @@ void Settings::increaseCVar(const std::string& name, const unsigned int& value)
 		m_logBuffer->add(name + ": " + v.str());
 	}
 	else
-		m_logDebug << "::SETTINGS unknown cvar: '" << name << "'\n";
+		BE_LOG( "unknown cvar: '" << name << "'" );
 }
 
 void Settings::decreaseCVar(const std::string& name, const unsigned int& value)
@@ -155,7 +157,7 @@ void Settings::decreaseCVar(const std::string& name, const unsigned int& value)
 		m_logBuffer->add(name + ": " + v.str());
 	}
 	else
-		m_logDebug << "::SETTINGS unknown cvar: '" << name << "'\n";
+		BE_LOG( "unknown cvar: '" << name << "'" );
 }
 
 void Settings::unregisterCVar(const std::string& name)
@@ -179,7 +181,8 @@ bool Settings::isCVar(const std::string& name)
 
 void Settings::loadProfile(const std::string& filename)
 {
-	m_logDebug << "::SETTINGS loading from '" << filename << "'\n";
+	//m_logDebug << "::SETTINGS loading from '" << filename << "'\n";
+	BE_LOG("::SETTINGS loading from '" << filename << "'");
 
 
 	BeFile befileProfile;
@@ -204,7 +207,7 @@ void Settings::loadProfile(const std::string& filename)
 		else {
 			m_profileName = file;
 		}
-		m_logDebug << "::SETTINGS profile name updated to " << m_profileName << "\n";
+		BE_LOG( "profile name is updated to '" << m_profileName << "'" );
 		
 		std::string line;
 		while ( befileProfile.getLine(line) )
@@ -227,7 +230,7 @@ void Settings::loadProfile(const std::string& filename)
 							BE_ERROR("::SETTINGS could not set cvar '" << sw <<  "', value '" << arg <<  "'");
 					}
 					else
-						m_logDebug << "::SETTINGS warning: unknown option in profile '" << sw << "'\n";
+						BE_LOG( "warning: unknown option in profile '" << sw << "'" );
 				}
 				else
 					BE_ERROR("::SETTINGS error: Option without an argument '" << line);
@@ -235,7 +238,7 @@ void Settings::loadProfile(const std::string& filename)
 		}
 	}
 	else
-		m_logDebug << "::SETTINGS warning: cannot open profile '" << filename << "'\n";
+		BE_LOG( "warning: cannot open profile '" << filename << "'" );
 }
 
 void Settings::saveProfile()
@@ -323,7 +326,7 @@ void Settings::checkCommandLineOptions(int argc, char *argv[])
 							BE_ERROR("::SETTINGS error: option '" << purecmd << "' expects an argument");
 					}
 					else
-						m_logDebug << "::SETTINGS warning: unknown commandline option: '" << purecmd << "'\n";
+						BE_LOG( "warning: unknown commandline option: '" << purecmd << "'" );
 				}
 			}
 		}
@@ -331,7 +334,7 @@ void Settings::checkCommandLineOptions(int argc, char *argv[])
 	}
  
 	if ( optind < argc )
-		m_logDebug << "::SETTINGS warning: unknown commandline option: '" << argv[optind] << "'\n";
+		BE_LOG( "warning: unknown commandline option: '" << argv[optind] << "'" );
 }
 
 void Settings::createHelpInfo()

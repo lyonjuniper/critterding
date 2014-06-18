@@ -368,7 +368,7 @@ void BeObjLoader::loadMaterialfile( BeFilesystem& filesystem, const std::string&
 						if( material->m_material.getAmbient() == btVector3(0,0,0) )
 						{
 							material->m_material.setAmbient( material->m_material.getDiffuse() );
-							m_logDebug << "::OBJ warning: " << file << " (" << name << ")" << ": Ambient 0, setting to diffuse color" << "\n";
+							BE_LOG( "warning: " << file << " (" << name << ")" << ": Ambient 0, setting to diffuse color" );
 // 							material->m_material.setAmbient( Vector4f(0.4,0.4,0.4,1) );
 						}
 

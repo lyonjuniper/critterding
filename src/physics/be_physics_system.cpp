@@ -16,7 +16,7 @@ m_logDebug("PHYSTICS")
 
 boost::shared_ptr<btDynamicsWorld> BePhysicsSystem::createWorld()
 {
-	m_logDebug << "::PHYSTICS setting up bullet\n";
+	BE_LOG( "setting up bullet" );
 	boost::shared_ptr<btDynamicsWorld> dynamicsWorld(new btSoftRigidDynamicsWorld(m_dispatcher.get(),m_broadphase.get(),m_solver.get(),m_collisionConfiguration.get()));
 	if(dynamicsWorld)
 	{

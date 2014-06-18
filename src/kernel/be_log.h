@@ -27,6 +27,13 @@
 	exit(1);								\
 }
 
+#define BE_LOG(msg)									\
+{													\
+	std::stringstream s;								\
+	s << "::" << m_logDebug.m_shortChapter << ":" << __FUNCTION__ << " | "<< msg << "\n";							\
+	m_logDebug << s.str();											\
+}
+
 class BeLog
 {
 	public:
@@ -45,8 +52,12 @@ class BeLog
 class BeLogDebug : public BeLog
 {
 	public:
-		BeLogDebug( const std::string& chapter ) : m_chapter("debug_" + chapter) {};
+		BeLogDebug( const std::string& chapter ) : m_shortChapter(chapter), m_chapter("debug_" + chapter) {};
 		virtual ~BeLogDebug() {};
+		
+	public:
+		std::string m_shortChapter;
+		
 	private:
 		void log(const std::string& message);
 		std::string m_chapter;

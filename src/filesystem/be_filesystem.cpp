@@ -23,17 +23,17 @@ bool BeFilesystem::load( BeFile& befile, const std::string& file )
 
 		befile.setFilename( fullfilename );
 
-		m_logDebug << "::FILE checking " << fullfilename << "\n";
+		BE_LOG( "checking " << fullfilename );
 // 		std::cerr << "checking " << fullfilename << std::endl;
 		
 		if ( boost::filesystem::exists( fullfilename ) )
 		{
-			m_logDebug << "::FILE loading " << fullfilename << "\n";
+			BE_LOG( "loading " << fullfilename );
 			return true;
 		}
 	}
 
-	m_logDebug << "::FILE warning: cannot find file '" << file << "'\n";
+	BE_LOG( "warning: cannot find file '" << file );
 	return false;
 }
 
@@ -51,7 +51,7 @@ std::string BeFilesystem::getPath( const std::string& file )
 		}
 	}
 
-	m_logDebug << "::FILE warning: cannot find file '" << file << "'\n";
+	BE_LOG( "warning: cannot find file '" << file );
 	return "";
 }
 
@@ -108,7 +108,7 @@ void BeFilesystem::rename(const std::string& filename, const std::string& filena
 void BeFilesystem::rm(const std::string& filename)
 {
 	if( remove( filename.c_str() ) != 0 )
-		m_logDebug << "::FILE error: deleting file " << filename << "\n";
+		BE_LOG( "error: deleting file " << filename );
 // 	std::cerr << "Error deleting file" << std::endl;
 // 	else
 // 		cerr << "file succesfully deleted" << endl;
